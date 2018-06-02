@@ -80,6 +80,7 @@ public class ChromeDriverTest {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.titleContains(title));
         System.out.println("Functional Test 1 successful and form filled out correctly");
+        driver.close();
         
 //--------------------------------------------FUNCTIONAL TEST 2--------------------------------------------//
         //Test Submitting an empty form
