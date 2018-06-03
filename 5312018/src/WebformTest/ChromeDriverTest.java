@@ -1,9 +1,6 @@
 package WebformTest;
 
 import java.util.concurrent.TimeUnit;
-
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -61,7 +58,7 @@ public class ChromeDriverTest {
 
         // Find Submit button and ID color
         WebElement PreHoverSubmit = driver.findElement(By.xpath("//div[@class='actions']"));
-        String PreColor = PreHoverSubmit.getCssValue("background-color");
+        String PreColor = PreHoverSubmit.getCssValue("color");
         System.out.println("Prior to hovering, the submit button color should be rgba(0, 0, 0, 0). Tested color is: " + PreColor);
         
         
@@ -72,9 +69,10 @@ public class ChromeDriverTest {
         Actions builder = new Actions(driver);
         WebElement HoverSubmit = driver.findElement(By.xpath("//input[@type='submit']"));
         builder.moveToElement(HoverSubmit).build().perform();
-		String Color = HoverSubmit.getCssValue("background-color");
+		String HoverColor = "rgba(232, 160, 25, 1";
+        String Color = HoverSubmit.getCssValue("color");
         System.out.println("After hovering, the submit button color is: " + Color);
-        if(PreColor != Color) {
+        if(Color != HoverColor) {
         	System.out.println(("Colors do not match, therefore the submit button changed color successfully on hover event."));
         }
         
