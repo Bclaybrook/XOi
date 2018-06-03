@@ -72,25 +72,19 @@ public class IETest {
 
         // Find Submit button and ID color
         WebElement PreHoverSubmit = driverforIE11.findElement(By.xpath("//div[@class='actions']"));
-        String PreColor = PreHoverSubmit.getCssValue("color");
-        System.out.println("Prior to hovering, the submit button should be rgba(0, 0, 0, 0). Tested color is: " + PreColor);
-        
+        System.out.println("Prior to hovering, the Tested color is: " + PreHoverSubmit.getCssValue("background-color"));
         
        // Mouse Over and verify color change on Submit button
         driverforIE11.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         
         //WebElement HoverSubmit = driver.findElement(By.cssSelector(selector_For_Web_Element_To_Be_Hovered));
         Actions builder = new Actions(driverforIE11);
-        WebElement HoverSubmit = driverforIE11.findElement(By.xpath("//input[@type='submit']"));
+        WebElement HoverSubmit = driverforIE11.findElement(By.xpath(".//*[@class='hs-button primary large']"));
         builder.moveToElement(HoverSubmit).build().perform();
-        String HoverColor = "rgba(232, 160, 25, 1";
-        String Color = HoverSubmit.getCssValue("color");
-        if(Color != HoverColor) {
-        	System.out.println("Hover did not cause Submit button to change colors.");
-        }        
+        System.out.println("After hovering, the Tested color is: " + HoverSubmit.getCssValue("background-color"));
         // Submit the sign up form
         
-         WebElement ClickSubmit = driverforIE11.findElement(By.xpath("//input[@type='submit']"));
+        WebElement ClickSubmit = driverforIE11.findElement(By.xpath("//input[@type='submit']"));
          
         ClickSubmit.click();
   

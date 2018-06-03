@@ -57,24 +57,18 @@ public class ChromeDriverTest {
         System.out.println("Phone Number has been filled out");
 
         // Find Submit button and ID color
-        WebElement PreHoverSubmit = driver.findElement(By.xpath("//div[@class='actions']"));
-        String PreColor = PreHoverSubmit.getCssValue("color");
-        System.out.println("Prior to hovering, the submit button color should be rgba(0, 0, 0, 0). Tested color is: " + PreColor);
+        WebElement PreHoverSubmit = driver.findElement((By.xpath("//input[@type='submit']")));
+        System.out.println("Prior to hovering, the Tested color is: " + PreHoverSubmit.getCssValue("background-color"));
         
         
        // Mouse Over and verify color change on Submit button
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         
-        //WebElement HoverSubmit = driver.findElement(By.cssSelector(selector_For_Web_Element_To_Be_Hovered));
         Actions builder = new Actions(driver);
-        WebElement HoverSubmit = driver.findElement(By.xpath("//input[@type='submit']"));
+        WebElement HoverSubmit = driver.findElement((By.xpath("//input[@type='submit']")));
         builder.moveToElement(HoverSubmit).build().perform();
-		String HoverColor = "rgba(232, 160, 25, 1";
-        String Color = HoverSubmit.getCssValue("color");
-        System.out.println("After hovering, the submit button color is: " + Color);
-        if(Color != HoverColor) {
-        	System.out.println(("Colors do not match, therefore the submit button changed color successfully on hover event."));
-        }
+        System.out.println("After hovering, the Tested color is: " + HoverSubmit.getCssValue("background-color"));
+      
         
         // Submit the sign up form
         WebElement ClickSubmit = driver.findElement(By.xpath("//input[@type='submit']"));
